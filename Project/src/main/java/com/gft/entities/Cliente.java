@@ -24,31 +24,16 @@ public class Cliente extends Pessoa {
     @OneToMany(mappedBy = "tutor")
     private List<Animais> animais;
 
-	
 
-	public Cliente(Long id, List<Animais> animais) {
-		super();
-		this.id = id;
-		this.animais = animais;
-	}
-
-
-
-	public Cliente() {
-		super();
-	}
-
-
-
-	public Cliente(Long id, String nome, String sobrenome, Endereco Endereco, int telefone, List<Animais> animais) {
-		super(nome, sobrenome, Endereco, telefone);
-	}
-
-	
-	
-	
-
-    
-    
-
+    public Cliente(Long id, List<Animais> animais) {
+        super();
+        this.id = id;
+        this.animais = animais;
     }
+
+    public Cliente(Long id, String nome, String sobrenome, Endereco Endereco, int telefone, List<Animais> animais) {
+        super(nome, sobrenome, Endereco, telefone);
+    }
+
+
+}

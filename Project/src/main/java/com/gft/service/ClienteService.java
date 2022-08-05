@@ -1,6 +1,7 @@
 package com.gft.service;
 
 import com.gft.entities.Cliente;
+import com.gft.exception.ClienteException;
 import com.gft.repositories.ClienteRepo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,12 +22,8 @@ public class ClienteService {
         return clienteRepo.save(cliente);
     }
     public Cliente buscarCliente(Long id) throws Exception {
-        Optional<Cliente> cliente = clienteRepo.findById(id);
 
-        if (cliente.isEmpty()) {
-            throw new Exception("Aluno não encontrado");
-        }
-        return cliente.get();
+        return clienteRepo.findById(id).orElseThrow(()-> new ClienteException("Não encontrado"));
     }
 
     public Page<Cliente> listarCliente(Pageable page) {
