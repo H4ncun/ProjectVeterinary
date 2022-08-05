@@ -1,5 +1,6 @@
 package com.gft.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
@@ -10,7 +11,7 @@ public abstract class Pessoa {
 
     private String sobrenome;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Endereco Endereco;
 
     private int telefone;

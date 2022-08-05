@@ -19,5 +19,8 @@ public class Cliente extends Pessoa {
     @OneToMany(mappedBy = "tutor")
     private List<Animais> animais;
 
+    public Cliente(Long id,String nome, String sobrenome, Endereco endereco, int telefone, List<Animais> animais) {
+        super();
+    }
 
-}
+    }
