@@ -18,7 +18,7 @@ public class ClienteMapper {
 
     public static ResponseDTO fromEntity(Cliente cliente) {
 
-        return new ResponseDTO(cliente.getId(), cliente.get
+        return new ResponseDTO(cliente.getId(), cliente.getNome(), cliente.getSobrenome(), cliente.getEndereco().getId(), cliente.getTelefone(), cliente.getAnimais());
 
     }
 

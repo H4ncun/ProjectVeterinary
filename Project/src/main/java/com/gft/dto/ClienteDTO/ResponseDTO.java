@@ -1,9 +1,14 @@
 package com.gft.dto.ClienteDTO;
 
-import com.gft.entities.Animais;
-
 import java.util.List;
 
+import com.gft.entities.Animais;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class ResponseDTO {
 
     private Long id;
