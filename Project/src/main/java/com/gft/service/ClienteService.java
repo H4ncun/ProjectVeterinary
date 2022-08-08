@@ -2,19 +2,17 @@ package com.gft.service;
 
 import com.gft.entities.Cliente;
 import com.gft.exception.ClienteException;
-import com.gft.repositories.ClienteRepo;
+import com.gft.repositories.ClienteRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class ClienteService {
 
-    final ClienteRepo clienteRepo;
+    final ClienteRepository clienteRepo;
 
-    public ClienteService(ClienteRepo clienteRepo) {
+    public ClienteService(ClienteRepository clienteRepo) {
         this.clienteRepo = clienteRepo;
     }
 

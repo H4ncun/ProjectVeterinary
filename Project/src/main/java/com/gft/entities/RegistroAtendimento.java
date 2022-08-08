@@ -19,7 +19,7 @@ public class RegistroAtendimento {
     private Long id;
 
     @ManyToOne
-    private Animais animal;
+    private Animal animal;
 
     @ManyToOne
     private Medico medico;

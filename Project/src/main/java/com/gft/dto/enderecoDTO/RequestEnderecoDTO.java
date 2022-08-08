@@ -1,20 +1,18 @@
-package com.gft.dto.EnderecoDTO;
+package com.gft.dto.enderecoDTO;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ResponseDTO {
+public class RequestEnderecoDTO {
 
-    private Long id;
     private String nome;
     private String cep;
     private String numeroCasa;
     private String complemento;
 
-    public ResponseDTO(Long id, String nome, String cep, String numeroCasa, String complemento) {
-        this.id = id;
+    public RequestEnderecoDTO(String nome, String cep, String numeroCasa, String complemento) {
         this.nome = nome;
         this.cep = cep;
         this.numeroCasa = numeroCasa;

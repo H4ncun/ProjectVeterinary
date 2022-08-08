@@ -1,9 +1,12 @@
 package com.gft.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -11,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Animais {
+public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +24,14 @@ public class Animais {
 
     private String raca;
 
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
+
     @ManyToOne
     private Cliente tutor;
 
     @OneToMany(mappedBy = "animal")
     private List<RegistroAtendimento> registroAtendimentos;
 
-
+    public Animal(Long id, String nome, String raca, LocalDate now, Cliente cliente) {
+    }
 }

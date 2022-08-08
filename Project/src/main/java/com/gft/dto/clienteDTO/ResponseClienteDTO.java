@@ -1,4 +1,4 @@
-package com.gft.dto.medico;
+package com.gft.dto.clienteDTO;
 
 import com.gft.dto.enderecoDTO.ResponseEnderecoDTO;
 import lombok.AllArgsConstructor;
@@ -6,21 +6,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResponseMedicoDTO {
+public class ResponseClienteDTO {
 
-	private Long id;
-	private BigDecimal salario;
-	private String nome;
+    private Long id;
+    private String nome;
 
     private String sobrenome;
 
     private ResponseEnderecoDTO endereco;
 
     private int telefone;
+
+
 }

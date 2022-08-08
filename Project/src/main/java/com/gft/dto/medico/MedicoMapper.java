@@ -1,6 +1,6 @@
 package com.gft.dto.medico;
 
-import com.gft.dto.EnderecoDTO.EnderecoMapper;
+import com.gft.dto.enderecoDTO.EnderecoMapper;
 import com.gft.entities.Medico;
 
 public class MedicoMapper {
