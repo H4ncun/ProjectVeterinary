@@ -14,6 +14,11 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Entity
 public class Medico extends Pessoa {
+	
+	public Medico(Long id, BigDecimal salario, String nome, String sobrenome, Endereco endereco, int telefone) {
+		super(nome, sobrenome, endereco, telefone);
+		this.salario = salario;
+	}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
