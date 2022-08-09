@@ -19,9 +19,10 @@ public class ClienteService {
     public Cliente salvar(Cliente cliente) {
         return clienteRepo.save(cliente);
     }
+
     public Cliente buscarCliente(Long id) throws Exception {
 
-        return clienteRepo.findById(id).orElseThrow(()-> new ClienteException("Não encontrado"));
+        return clienteRepo.findById(id).orElseThrow(() -> new ClienteException("Não encontrado"));
     }
 
     public Page<Cliente> listarCliente(Pageable page) {
@@ -33,6 +34,15 @@ public class ClienteService {
         Cliente cliente = this.buscarCliente(id);
 
         clienteRepo.delete(cliente);
+    }
+
+    public Cliente atualizarCliente(Cliente cliente, Long id) throws Exception {
+
+        Cliente oldCliente = this.buscarCliente(id);
+
+        cliente.setId(oldCliente.getId());
+
+        return clienteRepo.save(cliente);
     }
 }
 
