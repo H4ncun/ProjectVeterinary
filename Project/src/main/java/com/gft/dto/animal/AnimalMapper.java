@@ -11,11 +11,11 @@ public class AnimalMapper {
 
     public static Animal fromDTO(RequestAnimalDTO dto) {
 
-        Cliente cliente = new Cliente();
-        cliente.setId(dto.getTutorID());
+//        Cliente cliente = new Cliente();
+//        cliente.setId(dto.getTutorID());
 
 
-        return new Animal(null, dto.getNome(), dto.getRaca(), LocalDate.now(), cliente);
+        return new Animal(null, dto.getNome(), dto.getRaca(), LocalDate.now(), new Cliente(dto.getTutorID()));
 
     }
 

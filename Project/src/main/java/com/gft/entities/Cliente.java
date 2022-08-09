@@ -5,10 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Getter
 @Setter
@@ -20,8 +23,17 @@ public class Cliente extends Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @OneToMany(mappedBy = "tutor")
+    private List<Animal> animais;
 
     public Cliente(Long id, String nome, String sobrenome, Endereco endereco, int telefone) {
         super(nome, sobrenome, endereco, telefone);
     }
+
+	public Cliente(Long id) {
+		this.id = id;
+	}
+    
+    
 }

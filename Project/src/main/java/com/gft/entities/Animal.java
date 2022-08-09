@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
 public class Animal {
 
     @Id
@@ -32,6 +34,13 @@ public class Animal {
     @OneToMany(mappedBy = "animal")
     private List<RegistroAtendimento> registroAtendimentos;
 
-    public Animal(Long id, String nome, String raca, LocalDate now, Cliente cliente) {
-    }
+	public Animal(Long id, String nome, String raca, LocalDate dataNascimento, Cliente tutor) {
+		this.id = id;
+		this.nome = nome;
+		this.raca = raca;
+		this.dataNascimento = dataNascimento;
+		this.tutor = tutor;
+	}
+
+    
 }
