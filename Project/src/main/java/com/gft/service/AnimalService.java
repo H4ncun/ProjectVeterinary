@@ -2,6 +2,9 @@ package com.gft.service;
 
 import com.gft.entities.Animal;
 import com.gft.repositories.AnimalRepository;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,5 +19,13 @@ public class AnimalService {
     public Animal salvar(Animal animal) {
 
         return animalRepository.save(animal);
+    }
+    
+    public List<Animal> listar() {
+    	return animalRepository.findAll();
+    }
+    
+    public List<Animal> listarPorClienteID(Long clienteId) {
+    	return animalRepository.findByTutor(clienteId);
     }
 }
