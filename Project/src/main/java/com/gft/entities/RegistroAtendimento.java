@@ -1,18 +1,9 @@
 package com.gft.entities;
 
-import java.time.LocalDateTime;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -33,7 +24,7 @@ public class RegistroAtendimento {
     @ManyToOne
     private Medico medico;
 
-    private LocalDateTime data;
+    private Date data;
 
     private String dadosAnimal;
 
