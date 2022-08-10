@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,7 +27,7 @@ public class Cliente extends Pessoa {
     private Long id;
     
     @OneToMany(mappedBy = "tutor",cascade = CascadeType.PERSIST)
-    private List<Animal> animais;
+    private List<Animal> animais = new ArrayList<>();
 
     public Cliente(Long id, String nome, Endereco endereco, int telefone) {
         super(nome, endereco, telefone);

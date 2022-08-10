@@ -1,6 +1,7 @@
 package com.gft.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -34,12 +35,11 @@ public class Animal {
 
     private LocalDate dataNascimento;
 
-    //@JsonIgnore
     @ManyToOne
     private Cliente tutor;
 
     @OneToMany(mappedBy = "animal")
-    private List<RegistroAtendimento> registroAtendimentos;
+    private List<RegistroAtendimento> registroAtendimentos = new ArrayList<>();
 
 	public Animal(Long id, String nome, String raca, LocalDate dataNascimento, Cliente tutor) {
 		this.id = id;

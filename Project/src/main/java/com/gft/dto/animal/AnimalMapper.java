@@ -1,20 +1,18 @@
 package com.gft.dto.animal;
 
 
-import com.gft.entities.Animal;
-import com.gft.entities.Cliente;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.gft.entities.Animal;
+import com.gft.entities.Cliente;
 
 public class AnimalMapper {
 
 
     public static Animal fromDTO(RequestAnimalDTO dto) {
 
-        return new Animal(null, dto.getNome(), dto.getRaca(), LocalDate.now(), new Cliente(dto.getTutorID()));
+        return new Animal(null, dto.getNome(), dto.getRaca(), dto.getDataNascimento(), new Cliente(dto.getTutorID()));
 
     }
 
@@ -24,11 +22,6 @@ public class AnimalMapper {
     }
     
     public static List<ResponseAnimalDTO> toCollectionDTO(List<Animal> animais) {
-    	
-    	if(animais == null) {
-    		List<ResponseAnimalDTO> animal = new ArrayList<>();
-    		return animal;
-    	}
     	
     	return animais.stream()
     			.map(AnimalMapper::fromEntity)
