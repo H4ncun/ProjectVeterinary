@@ -2,8 +2,8 @@ package com.gft.dto.clienteDTO;
 
 import java.util.List;
 
+import com.gft.dto.animal.ResponseAnimalDTO;
 import com.gft.dto.enderecoDTO.ResponseEnderecoDTO;
-import com.gft.entities.Animal;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,13 +19,11 @@ public class ResponseClienteDTO {
     private Long id;
     private String nome;
 
-    private String sobrenome;
-
     private ResponseEnderecoDTO endereco;
 
     private int telefone;
     
-    private List<Animal> animal;
+    private List<ResponseAnimalDTO> animal;
 
 
 }

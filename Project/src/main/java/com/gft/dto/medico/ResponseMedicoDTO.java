@@ -18,8 +18,6 @@ public class ResponseMedicoDTO {
 	private BigDecimal salario;
 	private String nome;
 
-    private String sobrenome;
-
     private ResponseEnderecoDTO endereco;
 
     private int telefone;

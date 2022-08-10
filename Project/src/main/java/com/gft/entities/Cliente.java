@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +25,11 @@ public class Cliente extends Pessoa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @OneToMany(mappedBy = "tutor")
+    @OneToMany(mappedBy = "tutor",cascade = CascadeType.PERSIST)
     private List<Animal> animais;
 
-    public Cliente(Long id, String nome, String sobrenome, Endereco endereco, int telefone) {
-        super(nome, sobrenome, endereco, telefone);
+    public Cliente(Long id, String nome, Endereco endereco, int telefone) {
+        super(nome, endereco, telefone);
     }
 
 	public Cliente(Long id) {

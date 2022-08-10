@@ -7,10 +7,10 @@ public class MedicoMapper {
 
 	public static Medico fromDTO(RequestMedicoDTO dto) {
 		
-		return new Medico(null, dto.getSalario(), dto.getNome(), dto.getSobrenome(), EnderecoMapper.fromDTO(dto.getEndereco()), dto.getTelefone());
+		return new Medico(null, dto.getSalario(), dto.getNome(), EnderecoMapper.fromDTO(dto.getEndereco()), dto.getTelefone());
 	}
 	
 	public static ResponseMedicoDTO fromEntity(Medico medico) {
-		return new ResponseMedicoDTO(medico.getId(), medico.getSalario(), medico.getNome(), medico.getSobrenome(), EnderecoMapper.fromEntity(medico.getEndereco()), medico.getTelefone());
+		return new ResponseMedicoDTO(medico.getId(), medico.getSalario(), medico.getNome(), EnderecoMapper.fromEntity(medico.getEndereco()), medico.getTelefone());
 	}
 }

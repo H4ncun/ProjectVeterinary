@@ -1,5 +1,6 @@
 package com.gft.dto.clienteDTO;
 
+import com.gft.dto.animal.AnimalMapper;
 import com.gft.dto.enderecoDTO.EnderecoMapper;
 import com.gft.entities.Cliente;
 
@@ -11,14 +12,13 @@ public class ClienteMapper {
 
 
 
-        return new Cliente(null, dto.getNome(), dto.getSobrenome(), EnderecoMapper.fromDTO(dto.getEndereco()), dto.getTelefone());
+        return new Cliente(null, dto.getNome(), EnderecoMapper.fromDTO(dto.getEndereco()), dto.getTelefone());
 
     }
 
     public static ResponseClienteDTO fromEntity(Cliente cliente) {
-
-        return new ResponseClienteDTO(cliente.getId(), cliente.getNome(), cliente.getSobrenome(), EnderecoMapper.fromEntity(cliente.getEndereco()), cliente.getTelefone(), cliente.getAnimais());
-
+    	
+    	return new ResponseClienteDTO(cliente.getId(), cliente.getNome(), EnderecoMapper.fromEntity(cliente.getEndereco()), cliente.getTelefone(),AnimalMapper.toCollectionDTO(cliente.getAnimais()));
     }
 
 }

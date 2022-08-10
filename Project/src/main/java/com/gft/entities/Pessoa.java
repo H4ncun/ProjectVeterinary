@@ -15,8 +15,6 @@ public abstract class Pessoa {
 
     private String nome;
 
-    private String sobrenome;
-
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Endereco Endereco;
 

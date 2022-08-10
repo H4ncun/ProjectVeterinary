@@ -42,7 +42,7 @@ public class AnimalController {
     			.collect(Collectors.toList()));
     }
     
-    @GetMapping("{id}")
+    @GetMapping("clientes/{id}")
     public ResponseEntity<List<ResponseAnimalDTO>> listaPoroClienteId(@PathVariable Long id) {
     	return ResponseEntity.ok(animalService.listarPorClienteID(id)
     			.stream().map(AnimalMapper::fromEntity)

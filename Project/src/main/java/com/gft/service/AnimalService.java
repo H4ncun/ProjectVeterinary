@@ -1,6 +1,7 @@
 package com.gft.service;
 
 import com.gft.entities.Animal;
+import com.gft.entities.Cliente;
 import com.gft.repositories.AnimalRepository;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class AnimalService {
     }
     
     public List<Animal> listarPorClienteID(Long clienteId) {
-    	return animalRepository.findByTutor(clienteId);
+    	
+    	return animalRepository.findByTutor(new Cliente(clienteId));
     }
 }
