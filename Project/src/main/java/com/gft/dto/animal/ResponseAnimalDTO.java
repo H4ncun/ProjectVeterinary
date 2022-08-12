@@ -25,7 +25,4 @@ public class ResponseAnimalDTO {
 
     private Long tutorID;
 
-    private List<RegistroAtendimento> registroAtendimentos;
-
-
 }

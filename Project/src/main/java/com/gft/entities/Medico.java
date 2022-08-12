@@ -1,6 +1,9 @@
 package com.gft.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,11 +17,11 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Entity
 public class Medico extends Pessoa {
-	
-	public Medico(Long id, BigDecimal salario, String nome, Endereco endereco, int telefone) {
-		super(nome, endereco, telefone);
-		this.salario = salario;
-	}
+
+    public Medico(Long id, BigDecimal salario, String nome, Endereco endereco, int telefone) {
+        super(nome, endereco, telefone);
+        this.salario = salario;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +29,6 @@ public class Medico extends Pessoa {
 
     private BigDecimal salario;
 
+    public Medico(Long id) {
+    }
 }

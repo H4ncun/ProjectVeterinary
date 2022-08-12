@@ -3,15 +3,15 @@ package com.gft.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 
-@Entity
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class RegistroAtendimento {
 
     @Id
@@ -24,11 +24,11 @@ public class RegistroAtendimento {
     @ManyToOne
     private Medico medico;
 
-    private Date data;
+    private LocalDate data;
 
     private String dadosAnimal;
 
-    private String diagnotico;
+    private String diagnostico;
 
     private String comentarios;
 

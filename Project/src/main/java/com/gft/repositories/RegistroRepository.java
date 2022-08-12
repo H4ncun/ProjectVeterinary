@@ -1,11 +1,9 @@
 package com.gft.repositories;
 
+import com.gft.entities.RegistroAtendimento;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.gft.entities.Medico;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MedicoRepository extends JpaRepository<Medico, Long> {
-
+public interface RegistroRepository extends JpaRepository<RegistroAtendimento, Long> {
 }

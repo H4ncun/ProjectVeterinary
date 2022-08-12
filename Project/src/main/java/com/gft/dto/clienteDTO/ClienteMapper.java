@@ -7,10 +7,7 @@ import com.gft.entities.Cliente;
 
 public class ClienteMapper {
 
-
     public static Cliente fromDTO(RequestClienteDTO dto) {
-
-
 
         return new Cliente(null, dto.getNome(), EnderecoMapper.fromDTO(dto.getEndereco()), dto.getTelefone());
 

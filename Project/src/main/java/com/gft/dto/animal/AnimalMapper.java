@@ -1,14 +1,13 @@
 package com.gft.dto.animal;
 
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.gft.entities.Animal;
 import com.gft.entities.Cliente;
 
-public class AnimalMapper {
+import java.util.List;
+import java.util.stream.Collectors;
 
+public class AnimalMapper {
 
     public static Animal fromDTO(RequestAnimalDTO dto) {
 
@@ -18,14 +17,14 @@ public class AnimalMapper {
 
     public static ResponseAnimalDTO fromEntity(Animal animal) {
 
-        return new ResponseAnimalDTO(animal.getId(), animal.getNome(), animal.getRaca(), animal.getDataNascimento(), animal.getTutor().getId(), animal.getRegistroAtendimentos());
+        return new ResponseAnimalDTO(animal.getId(), animal.getNome(), animal.getRaca(), animal.getDataNascimento(), animal.getTutor().getId());
     }
-    
+
     public static List<ResponseAnimalDTO> toCollectionDTO(List<Animal> animais) {
-    	
-    	return animais.stream()
-    			.map(AnimalMapper::fromEntity)
-    			.collect(Collectors.toList());
+
+        return animais.stream()
+                .map(AnimalMapper::fromEntity)
+                .collect(Collectors.toList());
     }
 
 
