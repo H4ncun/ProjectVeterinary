@@ -5,6 +5,7 @@ import com.gft.entities.Cliente;
 import com.gft.exception.NegocioException;
 import com.gft.repositories.AnimalRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class AnimalService {
         this.animalRepository = animalRepository;
     }
 
+    @Transactional
     public Animal salvar(Animal animal) {
 
         return animalRepository.save(animal);
@@ -35,9 +37,18 @@ public class AnimalService {
         return animalRepository.findById(id)
                 .orElseThrow(() -> new NegocioException("Animal não encontrado"));
     }
+    
+    @Transactional
+    public Animal atualizar(Animal animal, Long id) {
+    	Animal animalOriginal = this.buscar(id);
+    	animal.setId(animalOriginal.getId());
+    	
+    	return animalRepository.save(animal);
+    }
 
-    public void deletarAnimal(Long id) {
-
+    @Transactional
+    public void deletar(Long id) {
+    	this.buscar(id);
         animalRepository.deleteById(id);
     }
 }

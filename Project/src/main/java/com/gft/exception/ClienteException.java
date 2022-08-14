@@ -1,7 +1,10 @@
 package com.gft.exception;
 
 public class ClienteException extends RuntimeException{
-    public ClienteException(String message) {
+	
+	private static final long serialVersionUID = 1L;
+
+	public ClienteException(String message) {
         super(message);
     }
 }

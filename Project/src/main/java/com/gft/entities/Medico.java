@@ -30,5 +30,6 @@ public class Medico extends Pessoa {
     private BigDecimal salario;
 
     public Medico(Long id) {
+    	this.id = id;
     }
 }

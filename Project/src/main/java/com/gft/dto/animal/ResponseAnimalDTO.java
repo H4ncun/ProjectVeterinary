@@ -1,13 +1,11 @@
 package com.gft.dto.animal;
 
-import com.gft.entities.RegistroAtendimento;
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @Getter
 @Setter

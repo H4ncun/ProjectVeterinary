@@ -27,5 +27,6 @@ public class Animal {
     private Cliente tutor;
 
     public Animal(Long id) {
+    	this.id = id;
     }
 }
