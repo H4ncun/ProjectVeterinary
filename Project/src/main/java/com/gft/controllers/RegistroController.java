@@ -2,11 +2,10 @@ package com.gft.controllers;
 
 import javax.validation.Valid;
 
+import com.gft.dto.animal.AnimalMapper;
+import com.gft.dto.animal.ResponseAnimalDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.gft.dto.registroAtendimento.RegistroMapper;
 import com.gft.dto.registroAtendimento.RequestRegistroDTO;
@@ -17,6 +16,9 @@ import com.gft.entities.RegistroAtendimento;
 import com.gft.service.AnimalService;
 import com.gft.service.MedicoService;
 import com.gft.service.RegistroService;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/registros")
@@ -45,6 +47,13 @@ public class RegistroController {
         registro.setMedico(medico);
 
         return ResponseEntity.ok(RegistroMapper.fromEntity(registro));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ResponseRegistroDTO>> listar() {
+        return ResponseEntity.ok(registroService.listar()
+                .stream().map(RegistroMapper::fromEntity)
+                .collect(Collectors.toList()));
     }
 
 }
