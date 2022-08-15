@@ -8,6 +8,10 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,17 +19,20 @@ import java.time.LocalDate;
 public class RequestAnimalDTO {
 
     @ApiModelProperty(value = "Nome Animal", name = "nome", dataType = "String", example = "Trovão")
+    @NotBlank
+    @Size(max = 150)
     private String nome;
 
-    @ApiModelProperty(value = "Data de Nascimento Animal", name = "dataNascimento", dataType = "LocalDate",
-            example =
-                    "2016-06-08")
+    @ApiModelProperty(value = "Data de Nascimento Animal", name = "dataNascimento", dataType = "LocalDate", example ="2016-06-08")
+    @NotNull
     private LocalDate dataNascimento;
 
     @ApiModelProperty(value = "Raça Animal", name = "raca", dataType = "String", example = "Pinscher")
+    @NotBlank
     private String raca;
 
     @ApiModelProperty(value = "ID do Tutor", name = "tutorID", dataType = "Long", example = "1")
+    @NotNull
     private Long tutorID;
 
 }

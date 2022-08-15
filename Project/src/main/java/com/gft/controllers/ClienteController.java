@@ -63,7 +63,7 @@ public class ClienteController {
 
     @ApiOperation(value = "Atualiza os dados do cliente informado pelo id")
     @PutMapping("{id}")
-    public ResponseEntity<ResponseClienteDTO> atualizarCliente(@RequestBody RequestClienteDTO dto, @PathVariable Long id) {
+    public ResponseEntity<ResponseClienteDTO> atualizarCliente(@Valid @RequestBody RequestClienteDTO dto, @PathVariable Long id) {
 
         Cliente cliente;
         try {

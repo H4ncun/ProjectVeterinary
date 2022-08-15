@@ -59,7 +59,7 @@ public class AnimalController {
     
     @ApiOperation(value = "Atualiza os dados do animal informado pelo id")
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseAnimalDTO> atualizar(@PathVariable Long id, @RequestBody RequestAnimalDTO dto) {
+    public ResponseEntity<ResponseAnimalDTO> atualizar(@PathVariable Long id,@Valid @RequestBody RequestAnimalDTO dto) {
     	Animal animal = animalService.atualizar(AnimalMapper.fromDTO(dto), id);
     	
     	return ResponseEntity.ok(AnimalMapper.fromEntity(animal));
