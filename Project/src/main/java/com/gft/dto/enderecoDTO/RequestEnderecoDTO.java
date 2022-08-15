@@ -18,7 +18,6 @@ public class RequestEnderecoDTO {
     @ApiModelProperty(value = "complemento do endereço", name = "complemento", dataType = "String", example = "Apartemento 41C")
     private String complemento;
 
-
     public RequestEnderecoDTO(String nome, String cep, String numeroCasa, String complemento) {
         this.nome = nome;
         this.cep = cep;

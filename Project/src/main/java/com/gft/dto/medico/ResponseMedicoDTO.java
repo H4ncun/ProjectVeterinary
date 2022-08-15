@@ -20,5 +20,5 @@ public class ResponseMedicoDTO {
 
     private ResponseEnderecoDTO endereco;
 
-    private int telefone;
+    private String telefone;
 }

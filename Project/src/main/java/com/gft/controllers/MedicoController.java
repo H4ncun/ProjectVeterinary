@@ -3,6 +3,8 @@ package com.gft.controllers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,15 @@ public class MedicoController {
 
     private MedicoService medicoService;
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Fields mismatch"),
+            @ApiResponse(code = 401, message = "Access Denied"),
+            @ApiResponse(code = 403, message = "Access forbidden"),
+            @ApiResponse(code = 404, message = "Content not found"),
+            @ApiResponse(code = 409, message = "Integrity error"),
+            @ApiResponse(code = 500, message = "Internal server error"),
+    })
     @ApiOperation(value = "Retorna todos os médicos")
     @GetMapping
     public ResponseEntity<List<ResponseMedicoDTO>> listar() {
@@ -37,6 +48,15 @@ public class MedicoController {
                 .collect(Collectors.toList()));
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Fields mismatch"),
+            @ApiResponse(code = 401, message = "Access Denied"),
+            @ApiResponse(code = 403, message = "Access forbidden"),
+            @ApiResponse(code = 404, message = "Content not found"),
+            @ApiResponse(code = 409, message = "Integrity error"),
+            @ApiResponse(code = 500, message = "Internal server error"),
+    })
     @ApiOperation(value = "Retorna um médico pelo id informado")
     @GetMapping("/{medicoId}")
     public ResponseEntity<ResponseMedicoDTO> buscar(@PathVariable Long medicoId) {
@@ -44,6 +64,15 @@ public class MedicoController {
         return ResponseEntity.ok(MedicoMapper.fromEntity(medico));
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Fields mismatch"),
+            @ApiResponse(code = 401, message = "Access Denied"),
+            @ApiResponse(code = 403, message = "Access forbidden"),
+            @ApiResponse(code = 404, message = "Content not found"),
+            @ApiResponse(code = 409, message = "Integrity error"),
+            @ApiResponse(code = 500, message = "Internal server error"),
+    })
     @ApiOperation(value = "Cria um médico")
     @PostMapping
     public ResponseEntity<ResponseMedicoDTO> salvar(@RequestBody RequestMedicoDTO dto) {
@@ -51,6 +80,15 @@ public class MedicoController {
         return ResponseEntity.ok(MedicoMapper.fromEntity(medico));
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Fields mismatch"),
+            @ApiResponse(code = 401, message = "Access Denied"),
+            @ApiResponse(code = 403, message = "Access forbidden"),
+            @ApiResponse(code = 404, message = "Content not found"),
+            @ApiResponse(code = 409, message = "Integrity error"),
+            @ApiResponse(code = 500, message = "Internal server error"),
+    })
     @ApiOperation(value = "Atualiza os dados do médico informado pelo id")
     @PutMapping("/{medicoId}")
     public ResponseEntity<ResponseMedicoDTO> atualizar(@PathVariable Long medicoId, @RequestBody RequestMedicoDTO dto) {
@@ -60,6 +98,15 @@ public class MedicoController {
         return ResponseEntity.ok(MedicoMapper.fromEntity(medico));
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Fields mismatch"),
+            @ApiResponse(code = 401, message = "Access Denied"),
+            @ApiResponse(code = 403, message = "Access forbidden"),
+            @ApiResponse(code = 404, message = "Content not found"),
+            @ApiResponse(code = 409, message = "Integrity error"),
+            @ApiResponse(code = 500, message = "Internal server error"),
+    })
     @ApiOperation(value = "Deleta os dados do médico informado pelo id")
     @DeleteMapping("/{medicoId}")
     public void remover(@PathVariable Long medicoId) {

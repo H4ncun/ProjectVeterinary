@@ -29,7 +29,7 @@ public class Cliente extends Pessoa {
     @OneToMany(mappedBy = "tutor",cascade = CascadeType.PERSIST)
     private List<Animal> animais = new ArrayList<>();
 
-    public Cliente(Long id, String nome, Endereco endereco, int telefone) {
+    public Cliente(Long id, String nome, Endereco endereco, String telefone) {
         super(nome, endereco, telefone);
     }
 

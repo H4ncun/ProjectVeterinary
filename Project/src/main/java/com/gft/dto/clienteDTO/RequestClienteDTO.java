@@ -19,7 +19,7 @@ public class RequestClienteDTO {
 
     private RequestEnderecoDTO endereco;
 
-	@ApiModelProperty(value = "telefone do cliente", name = "telefone", dataType = "int", example = "936482459")
-    private int telefone;
+	@ApiModelProperty(value = "telefone do cliente", name = "telefone", dataType = "String", example = "11936482459")
+    private String telefone;
 
 }

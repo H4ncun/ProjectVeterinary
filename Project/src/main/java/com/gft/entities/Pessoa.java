@@ -18,6 +18,6 @@ public abstract class Pessoa {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Endereco Endereco;
 
-    private int telefone;
+    private String telefone;
 
 }

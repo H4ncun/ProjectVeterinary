@@ -17,11 +17,12 @@ import lombok.Setter;
 public class ResponseClienteDTO {
 
     private Long id;
+
     private String nome;
 
     private ResponseEnderecoDTO endereco;
 
-    private int telefone;
+    private String telefone;
     
     private List<ResponseAnimalDTO> animal;
 

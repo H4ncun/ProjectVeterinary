@@ -1,11 +1,15 @@
 package com.gft.dto.medico;
 
 import com.gft.dto.enderecoDTO.RequestEnderecoDTO;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @AllArgsConstructor
@@ -13,14 +17,22 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class RequestMedicoDTO {
-	
-	private String nome;
 
-    private String sobrenome;
+    @ApiModelProperty(value = "Nome do médico", name = "nome", dataType = "String", example = "Rogério")
+    @Size(max = 250)
+    @NotBlank
+    private String nome;
 
     private RequestEnderecoDTO endereco;
 
-    private int telefone;
+    @ApiModelProperty(value = "Telefone do médico", name = "telefone", dataType = "String", example = "11946328416")
+    @NotBlank
+    private String telefone;
 
-	private BigDecimal salario;
+    @ApiModelProperty(value = "Salário do mmédico", name = "salario", dataType = "BigDecimal", example = "5200")
+    @NotNull
+    private BigDecimal salario;
+
 }
+
+

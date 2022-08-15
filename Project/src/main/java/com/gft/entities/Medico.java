@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @Entity
 public class Medico extends Pessoa {
 
-    public Medico(Long id, BigDecimal salario, String nome, Endereco endereco, int telefone) {
+    public Medico(Long id, BigDecimal salario, String nome, Endereco endereco, String telefone) {
         super(nome, endereco, telefone);
         this.salario = salario;
     }

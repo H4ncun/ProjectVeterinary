@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +42,15 @@ public class RegistroController {
         this.animalService = animalService;
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Fields mismatch"),
+            @ApiResponse(code = 401, message = "Access Denied"),
+            @ApiResponse(code = 403, message = "Access forbidden"),
+            @ApiResponse(code = 404, message = "Content not found"),
+            @ApiResponse(code = 409, message = "Integrity error"),
+            @ApiResponse(code = 500, message = "Internal server error"),
+    })
     @ApiOperation(value = "Cria o registro com as informções referentes ao atendimento do animal")
     @PostMapping
     public ResponseEntity<ResponseRegistroDTO> salvarAnimal(@RequestBody @Valid RequestRegistroDTO dto) {
@@ -54,6 +65,15 @@ public class RegistroController {
         return ResponseEntity.ok(RegistroMapper.fromEntity(registro));
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Fields mismatch"),
+            @ApiResponse(code = 401, message = "Access Denied"),
+            @ApiResponse(code = 403, message = "Access forbidden"),
+            @ApiResponse(code = 404, message = "Content not found"),
+            @ApiResponse(code = 409, message = "Integrity error"),
+            @ApiResponse(code = 500, message = "Internal server error"),
+    })
     @ApiOperation(value = "Retorna todos os registros")
     @GetMapping
     public ResponseEntity<List<ResponseRegistroDTO>> listar() {
