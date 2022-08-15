@@ -6,6 +6,9 @@ import com.gft.dto.clienteDTO.RequestClienteDTO;
 import com.gft.dto.clienteDTO.ResponseClienteDTO;
 import com.gft.entities.Cliente;
 import com.gft.service.ClienteService;
+
+import io.swagger.annotations.ApiOperation;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -25,12 +28,14 @@ public class ClienteController {
     }
 
 
-
+    @ApiOperation(value = "Retorna todos os clientes")
     @GetMapping
     public ResponseEntity<Page<ResponseClienteDTO>> listarCliente(@PageableDefault(sort = "id") Pageable page) {
 
         return ResponseEntity.ok(clienteService.listarCliente(page).map(ClienteMapper::fromEntity));
     }
+    
+    @ApiOperation(value = "Retorna um cliente pelo id informado")
     @GetMapping("{id}")
     public ResponseEntity<ResponseClienteDTO> buscarCliente(@PathVariable Long id) throws Exception {
 
@@ -39,6 +44,7 @@ public class ClienteController {
         return ResponseEntity.ok(ClienteMapper.fromEntity(cliente));
     }
 
+    @ApiOperation(value = "Cria um cliente")
     @PostMapping
     public ResponseEntity<ResponseClienteDTO> salvarCliente(@RequestBody @Valid RequestClienteDTO dto) {
 
@@ -46,6 +52,7 @@ public class ClienteController {
         return ResponseEntity.ok(ClienteMapper.fromEntity(cliente));
     }
 
+    @ApiOperation(value = "Deleta os dados do cliente informado pelo id")
     @DeleteMapping("{id}")
     public ResponseEntity<ResponseClienteDTO> deletarCliente(@PathVariable Long id) throws Exception {
 
@@ -54,6 +61,7 @@ public class ClienteController {
         return ResponseEntity.ok().build();
     }
 
+    @ApiOperation(value = "Atualiza os dados do cliente informado pelo id")
     @PutMapping("{id}")
     public ResponseEntity<ResponseClienteDTO> atualizarCliente(@RequestBody RequestClienteDTO dto, @PathVariable Long id) {
 

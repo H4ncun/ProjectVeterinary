@@ -1,11 +1,16 @@
 package com.gft.controllers;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.validation.Valid;
 
-import com.gft.dto.animal.AnimalMapper;
-import com.gft.dto.animal.ResponseAnimalDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.gft.dto.registroAtendimento.RegistroMapper;
 import com.gft.dto.registroAtendimento.RequestRegistroDTO;
@@ -17,8 +22,7 @@ import com.gft.service.AnimalService;
 import com.gft.service.MedicoService;
 import com.gft.service.RegistroService;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/registros")
@@ -36,6 +40,7 @@ public class RegistroController {
         this.animalService = animalService;
     }
 
+    @ApiOperation(value = "Cria o registro com as informções referentes ao atendimento do animal")
     @PostMapping
     public ResponseEntity<ResponseRegistroDTO> salvarAnimal(@RequestBody @Valid RequestRegistroDTO dto) {
 
@@ -49,6 +54,7 @@ public class RegistroController {
         return ResponseEntity.ok(RegistroMapper.fromEntity(registro));
     }
 
+    @ApiOperation(value = "Retorna todos os registros")
     @GetMapping
     public ResponseEntity<List<ResponseRegistroDTO>> listar() {
         return ResponseEntity.ok(registroService.listar()
