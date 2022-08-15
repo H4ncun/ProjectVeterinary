@@ -3,8 +3,13 @@ package com.gft.controllers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+<<<<<<< HEAD
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+=======
+import javax.validation.Valid;
+
+>>>>>>> a097b8d5505f7bcc0bd5731b7d91c7e30ec42646
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -75,7 +80,7 @@ public class MedicoController {
     })
     @ApiOperation(value = "Cria um médico")
     @PostMapping
-    public ResponseEntity<ResponseMedicoDTO> salvar(@RequestBody RequestMedicoDTO dto) {
+    public ResponseEntity<ResponseMedicoDTO> salvar(@Valid @RequestBody RequestMedicoDTO dto) {
         Medico medico = medicoService.salvar(MedicoMapper.fromDTO(dto));
         return ResponseEntity.ok(MedicoMapper.fromEntity(medico));
     }
@@ -91,7 +96,7 @@ public class MedicoController {
     })
     @ApiOperation(value = "Atualiza os dados do médico informado pelo id")
     @PutMapping("/{medicoId}")
-    public ResponseEntity<ResponseMedicoDTO> atualizar(@PathVariable Long medicoId, @RequestBody RequestMedicoDTO dto) {
+    public ResponseEntity<ResponseMedicoDTO> atualizar(@PathVariable Long medicoId, @Valid @RequestBody RequestMedicoDTO dto) {
 
         Medico medico = medicoService.atualizar(MedicoMapper.fromDTO(dto), medicoId);
 
