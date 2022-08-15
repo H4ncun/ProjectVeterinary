@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 public class RequestMedicoDTO {
 
     @ApiModelProperty(value = "Nome do médico", name = "nome", dataType = "String", example = "Rogério")
-    @Size(max = 250)
+    @Size(min = 2, max = 100)
     @NotBlank
     private String nome;
 

@@ -2,6 +2,7 @@
 package com.gft.dto.enderecoDTO;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -17,6 +18,7 @@ public class RequestEnderecoDTO {
     
     @ApiModelProperty(value = "cep da rua", name = "cep", dataType = "String", example = "93684381")
     @NotBlank
+    @Size(min = 8 , max = 9)
     private String cep;
     
     @ApiModelProperty(value = "número da casa", name = "numeroCasa", dataType = "String", example = "652")

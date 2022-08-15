@@ -2,12 +2,13 @@ package com.gft.dto.enderecoDTO;
 
 
 import com.gft.entities.Endereco;
+import com.gft.formatting.Format;
 
 public class EnderecoMapper {
 
     public static Endereco fromDTO(RequestEnderecoDTO dto) {
-
-        return new Endereco(null, dto.getNome(), dto.getCep(), dto.getNumeroCasa(), dto.getComplemento());
+    	
+        return new Endereco(null, dto.getNome(), new Format().formatCep(dto.getCep()), dto.getNumeroCasa(), dto.getComplemento());
 
     }
 
