@@ -7,14 +7,12 @@ import lombok.Setter;
 @Setter
 public class ResponseEnderecoDTO {
 
-    private Long id;
     private String nome;
     private String cep;
     private String numeroCasa;
     private String complemento;
 
-    public ResponseEnderecoDTO(Long id, String nome, String cep, String numeroCasa, String complemento) {
-        this.id = id;
+    public ResponseEnderecoDTO(String nome, String cep, String numeroCasa, String complemento) {
         this.nome = nome;
         this.cep = cep;
         this.numeroCasa = numeroCasa;

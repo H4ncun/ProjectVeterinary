@@ -15,10 +15,13 @@ import java.math.BigDecimal;
 public class ResponseMedicoDTO {
 
 	private Long id;
-	private BigDecimal salario;
+	
 	private String nome;
-
+	
+	private BigDecimal salario;
+	
+	private String telefone;
+	
     private ResponseEnderecoDTO endereco;
-
-    private String telefone;
+ 
 }

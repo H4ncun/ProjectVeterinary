@@ -17,8 +17,7 @@ public class RequestEnderecoDTO {
     private String nome;
     
     @ApiModelProperty(value = "cep da rua", name = "cep", dataType = "String", example = "93684381")
-    @NotBlank
-    @Size(min = 8 , max = 9)
+    @Size(min = 8 , max = 8)
     private String cep;
     
     @ApiModelProperty(value = "número da casa", name = "numeroCasa", dataType = "String", example = "652")

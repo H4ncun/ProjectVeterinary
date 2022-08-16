@@ -26,7 +26,7 @@ public class Cliente extends Pessoa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @OneToMany(mappedBy = "tutor",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "tutor",cascade = CascadeType.REMOVE)
     private List<Animal> animais = new ArrayList<>();
 
     public Cliente(Long id, String nome, Endereco endereco, String telefone) {

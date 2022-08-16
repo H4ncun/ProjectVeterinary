@@ -13,6 +13,6 @@ public class MedicoMapper {
     }
 
     public static ResponseMedicoDTO fromEntity(Medico medico) {
-        return new ResponseMedicoDTO(medico.getId(), medico.getSalario(), medico.getNome(), EnderecoMapper.fromEntity(medico.getEndereco()), medico.getTelefone());
+        return new ResponseMedicoDTO(medico.getId(), medico.getNome(),medico.getSalario(), medico.getTelefone(), EnderecoMapper.fromEntity(medico.getEndereco()));
     }
 }

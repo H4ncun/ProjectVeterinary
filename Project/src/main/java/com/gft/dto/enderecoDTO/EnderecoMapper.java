@@ -14,6 +14,6 @@ public class EnderecoMapper {
 
     public static ResponseEnderecoDTO fromEntity(Endereco endereco) {
 
-        return new ResponseEnderecoDTO(endereco.getId(), endereco.getNome(), endereco.getCep(), endereco.getComplemento(), endereco.getNumeroCasa());
+        return new ResponseEnderecoDTO(endereco.getNome(), endereco.getCep(), endereco.getNumeroCasa(),endereco.getComplemento());
     }
 }

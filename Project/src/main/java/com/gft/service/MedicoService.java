@@ -1,14 +1,16 @@
 package com.gft.service;
 
-import com.gft.entities.Medico;
-import com.gft.exception.NegocioException;
-import com.gft.repositories.EnderecoRepository;
-import com.gft.repositories.MedicoRepository;
-import lombok.AllArgsConstructor;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.gft.entities.Medico;
+import com.gft.exception.EntidadeNaoEncontradaException;
+import com.gft.repositories.EnderecoRepository;
+import com.gft.repositories.MedicoRepository;
+
+import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @Service
@@ -20,7 +22,7 @@ public class MedicoService {
 
     public Medico buscar(Long medicoId) {
         return medicoRepository.findById(medicoId)
-                .orElseThrow(() -> new NegocioException("Médico não encontrado"));
+                .orElseThrow(() -> new EntidadeNaoEncontradaException("Médico não encontrado"));
     }
 
     public List<Medico> listar() {
@@ -46,6 +48,8 @@ public class MedicoService {
     @Transactional
     public void excluir(Long medicoId) {
 
-        medicoRepository.deleteById(medicoId);
+    	Medico medico = this.buscar(medicoId);
+    	
+        medicoRepository.delete(medico);
     }
 }

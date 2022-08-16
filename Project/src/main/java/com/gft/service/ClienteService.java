@@ -1,48 +1,52 @@
 package com.gft.service;
 
-import com.gft.entities.Cliente;
-import com.gft.exception.ClienteException;
-import com.gft.repositories.ClienteRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.gft.entities.Cliente;
+import com.gft.exception.EntidadeNaoEncontradaException;
+import com.gft.repositories.ClienteRepository;
+import com.gft.repositories.EnderecoRepository;
+
 @Service
 public class ClienteService {
 
-    final ClienteRepository clienteRepo;
+    final ClienteRepository clienteRepository;
+    final EnderecoRepository enderecoRepository;
 
-    public ClienteService(ClienteRepository clienteRepo) {
-        this.clienteRepo = clienteRepo;
+    public ClienteService(ClienteRepository clienteRepo, EnderecoRepository enderecoRepository) {
+        this.clienteRepository = clienteRepo;
+		this.enderecoRepository = enderecoRepository;
     }
 
     public Cliente salvar(Cliente cliente) {
-        return clienteRepo.save(cliente);
+        return clienteRepository.save(cliente);
     }
 
-    public Cliente buscarCliente(Long id) throws Exception {
+    public Cliente buscarCliente(Long id) {
 
-        return clienteRepo.findById(id).orElseThrow(() -> new ClienteException("Não encontrado"));
+        return clienteRepository.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaException("Cliente não encontrado"));
     }
 
     public Page<Cliente> listarCliente(Pageable page) {
 
-        return clienteRepo.findAll(page);
+        return clienteRepository.findAll(page);
     }
 
     public void deletarCliente(Long id) throws Exception {
         Cliente cliente = this.buscarCliente(id);
 
-        clienteRepo.delete(cliente);
+        clienteRepository.delete(cliente);
     }
 
     public Cliente atualizarCliente(Cliente cliente, Long id) throws Exception {
 
-        Cliente oldCliente = this.buscarCliente(id);
-
-        cliente.setId(oldCliente.getId());
-
-        return clienteRepo.save(cliente);
+    	Cliente clienteOriginal = this.buscarCliente(id);
+        cliente.setId(clienteOriginal.getId());
+        cliente.getEndereco().setId(clienteOriginal.getEndereco().getId());
+        enderecoRepository.save(cliente.getEndereco());
+        return clienteRepository.save(cliente);
     }
 }
 

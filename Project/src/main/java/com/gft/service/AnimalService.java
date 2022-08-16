@@ -1,25 +1,30 @@
 package com.gft.service;
 
-import com.gft.entities.Animal;
-import com.gft.entities.Cliente;
-import com.gft.exception.NegocioException;
-import com.gft.repositories.AnimalRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.gft.entities.Animal;
+import com.gft.entities.Cliente;
+import com.gft.exception.EntidadeNaoEncontradaException;
+import com.gft.repositories.AnimalRepository;
 
 @Service
 public class AnimalService {
 
     private AnimalRepository animalRepository;
+    private ClienteService clienteService;
 
-    public AnimalService(AnimalRepository animalRepository) {
+    public AnimalService(AnimalRepository animalRepository, ClienteService clienteService) {
         this.animalRepository = animalRepository;
+        this.clienteService = clienteService;
     }
 
     @Transactional
     public Animal salvar(Animal animal) {
+    	
+    	clienteService.buscarCliente(animal.getTutor().getId());
 
         return animalRepository.save(animal);
     }
@@ -35,7 +40,7 @@ public class AnimalService {
 
     public Animal buscar(Long id) {
         return animalRepository.findById(id)
-                .orElseThrow(() -> new NegocioException("Animal não encontrado"));
+                .orElseThrow(() -> new EntidadeNaoEncontradaException("Animal não encontrado"));
     }
     
     @Transactional
@@ -48,7 +53,7 @@ public class AnimalService {
 
     @Transactional
     public void deletar(Long id) {
-    	this.buscar(id);
-        animalRepository.deleteById(id);
+    	Animal animal = this.buscar(id);
+        animalRepository.delete(animal);
     }
 }
