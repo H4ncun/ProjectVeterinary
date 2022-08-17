@@ -20,7 +20,7 @@ public class RacaService {
 
 		Flux<Raca> responseBody = this.webClientDogApi
 				.method(HttpMethod.GET)
-				.uri("https://api.thedogapi.com/v1/breeds/{id}?api_key=461e06fd-c361-4327-ba81-bee2f3a34c31", id)
+				.uri("/{id}?", id)
 				.retrieve()
 				.bodyToFlux(Raca.class);
 		if (responseBody.blockFirst().getId() == null) {
@@ -33,7 +33,7 @@ public class RacaService {
 
 		Flux<Raca> responseBody = this.webClientDogApi
 				.method(HttpMethod.GET)
-				.uri("https://api.thedogapi.com/v1/breeds/?api_key=461e06fd-c361-4327-ba81-bee2f3a34c31")
+				.uri("/?")
 				.retrieve()
 				.bodyToFlux(Raca.class);
 		
@@ -46,7 +46,7 @@ public class RacaService {
 
 		Flux<Raca> responseBody = this.webClientDogApi
 				.method(HttpMethod.GET)
-				.uri("https://api.thedogapi.com/v1/breeds/search?api_key=461e06fd-c361-4327-ba81-bee2f3a34c31&q={nome}", nome)
+				.uri("/search?q={nome}", nome)
 				.retrieve()
 				.bodyToFlux(Raca.class);
 		
