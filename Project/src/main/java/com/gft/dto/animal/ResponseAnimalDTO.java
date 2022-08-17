@@ -2,6 +2,8 @@ package com.gft.dto.animal;
 
 import java.time.LocalDate;
 
+import com.gft.entities.Raca;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +19,7 @@ public class ResponseAnimalDTO {
 
     private String nome;
 
-    private String raca;
+    private Raca raca;
 
     private LocalDate dataNascimento;
 

@@ -7,25 +7,36 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gft.entities.Animal;
 import com.gft.entities.Cliente;
+import com.gft.entities.Raca;
 import com.gft.exception.EntidadeNaoEncontradaException;
 import com.gft.repositories.AnimalRepository;
+import com.gft.repositories.RacaRepository;
+
+import reactor.core.publisher.Flux;
 
 @Service
 public class AnimalService {
 
     private AnimalRepository animalRepository;
     private ClienteService clienteService;
+    private RacaService racaService;
+    private RacaRepository racaRepository;
 
-    public AnimalService(AnimalRepository animalRepository, ClienteService clienteService) {
+    public AnimalService(AnimalRepository animalRepository, ClienteService clienteService, RacaService racaService, RacaRepository racaRepository) {
         this.animalRepository = animalRepository;
         this.clienteService = clienteService;
+        this.racaService = racaService;
+        this.racaRepository = racaRepository;
     }
 
     @Transactional
     public Animal salvar(Animal animal) {
     	
     	clienteService.buscarCliente(animal.getTutor().getId());
-
+    	Flux<Raca> raca = racaService.obterRacaPorId(animal.getRaca().getId());
+    	Raca racaBanco = racaRepository.save(raca.blockFirst());
+    	animal.setRaca(racaBanco);
+    	
         return animalRepository.save(animal);
     }
 

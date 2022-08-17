@@ -3,6 +3,7 @@ package com.gft.dto.animal;
 
 import com.gft.entities.Animal;
 import com.gft.entities.Cliente;
+import com.gft.entities.Raca;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +12,7 @@ public class AnimalMapper {
 
     public static Animal fromDTO(RequestAnimalDTO dto) {
 
-        return new Animal(null, dto.getNome(), dto.getRaca(), dto.getDataNascimento(), new Cliente(dto.getTutorID()));
+        return new Animal(null, dto.getNome(), new Raca(dto.getRacaId()), dto.getDataNascimento(), new Cliente(dto.getTutorID()));
 
     }
 

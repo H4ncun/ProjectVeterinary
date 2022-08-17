@@ -19,7 +19,8 @@ public class Animal {
 
     private String nome;
 
-    private String raca;
+    @ManyToOne
+    private Raca raca;
 
     private LocalDate dataNascimento;
 
