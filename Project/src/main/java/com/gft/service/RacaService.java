@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.gft.entities.Raca;
+import com.gft.exception.EntidadeNaoEncontradaException;
 
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Flux;
@@ -22,7 +23,9 @@ public class RacaService {
 				.uri("https://api.thedogapi.com/v1/breeds/{id}?api_key=461e06fd-c361-4327-ba81-bee2f3a34c31", id)
 				.retrieve()
 				.bodyToFlux(Raca.class);
-		
+		if (responseBody.blockFirst().getId() == null) {
+			throw new EntidadeNaoEncontradaException("Raça não encontrada");
+		}
 		return responseBody;
 	}
 	
@@ -46,6 +49,10 @@ public class RacaService {
 				.uri("https://api.thedogapi.com/v1/breeds/search?api_key=461e06fd-c361-4327-ba81-bee2f3a34c31&q={nome}", nome)
 				.retrieve()
 				.bodyToFlux(Raca.class);
+		
+		if (responseBody.blockFirst().getId() == null) {
+			throw new EntidadeNaoEncontradaException("Raça não encontrada");
+		}
 		
 		return responseBody;
 
