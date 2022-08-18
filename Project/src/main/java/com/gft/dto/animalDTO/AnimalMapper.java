@@ -1,4 +1,4 @@
-package com.gft.dto.animal;
+package com.gft.dto.animalDTO;
 
 
 import com.gft.entities.Animal;

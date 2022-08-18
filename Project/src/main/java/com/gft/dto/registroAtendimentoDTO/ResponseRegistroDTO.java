@@ -1,9 +1,9 @@
-package com.gft.dto.registroAtendimento;
+package com.gft.dto.registroAtendimentoDTO;
 
 import java.time.LocalDate;
 
-import com.gft.dto.animal.ResponseAnimalDTO;
-import com.gft.dto.medico.ResponseMedicoDTO;
+import com.gft.dto.animalDTO.ResponseAnimalDTO;
+import com.gft.dto.medicoDTO.ResponseMedicoDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

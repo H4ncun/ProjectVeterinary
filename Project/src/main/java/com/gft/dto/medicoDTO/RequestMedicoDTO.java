@@ -1,4 +1,4 @@
-package com.gft.dto.medico;
+package com.gft.dto.medicoDTO;
 
 import com.gft.dto.enderecoDTO.RequestEnderecoDTO;
 import io.swagger.annotations.ApiModelProperty;
@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -35,6 +36,11 @@ public class RequestMedicoDTO {
     @Valid
     @NotNull
     private RequestEnderecoDTO endereco;
+
+    @Email
+    private String email;
+
+    private String password;
 }
 
 

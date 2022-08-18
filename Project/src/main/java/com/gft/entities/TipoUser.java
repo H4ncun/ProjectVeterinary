@@ -4,32 +4,38 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Medico extends Pessoa {
-
+public class TipoUser implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private BigDecimal salario;
+    private String tipo;
 
-    public Medico(Long id) {
-        this.id = id;
+    public TipoUser(String tipo) {
+        this.tipo = tipo;
     }
 
-    public Medico(Long id, BigDecimal salario, String nome, Endereco endereco, String telefone,SystemUser systemUser) {
-        super(nome, endereco, telefone,systemUser);
-        this.salario = salario;
+    @Override
+    public String getAuthority() {
+        return getTipo();
     }
+
+
+    @Override
+    public String toString() {
+        return "Perfil [id=" + id + ", tipo=" + tipo + "]";
+    }
+
 }

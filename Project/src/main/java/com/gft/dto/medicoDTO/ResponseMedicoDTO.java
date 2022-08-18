@@ -1,4 +1,4 @@
-package com.gft.dto.medico;
+package com.gft.dto.medicoDTO;
 
 import com.gft.dto.enderecoDTO.ResponseEnderecoDTO;
 import lombok.AllArgsConstructor;
@@ -19,6 +19,8 @@ public class ResponseMedicoDTO {
 	private String nome;
 	
 	private BigDecimal salario;
+
+	private String email;
 	
 	private String telefone;
 	

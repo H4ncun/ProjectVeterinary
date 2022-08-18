@@ -1,6 +1,7 @@
 package com.gft.dto.clienteDTO;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,6 +31,10 @@ public class RequestClienteDTO {
     @ApiModelProperty(value = "telefone do cliente", name = "telefone", dataType = "String", example = "11936482459")
     @NotBlank
     private String telefone;
+    @Email
+    private String email;
+
+    private String password;
 
 
 }

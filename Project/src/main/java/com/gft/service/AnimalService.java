@@ -45,7 +45,6 @@ public class AnimalService {
     }
 
     public List<Animal> listarPorClienteID(Long clienteId) {
-
         return animalRepository.findByTutor(new Cliente(clienteId));
     }
 

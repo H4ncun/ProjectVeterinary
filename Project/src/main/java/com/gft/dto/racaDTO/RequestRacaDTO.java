@@ -1,4 +1,4 @@
-package com.gft.dto.raca;
+package com.gft.dto.racaDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

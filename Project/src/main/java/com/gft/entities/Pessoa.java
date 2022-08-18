@@ -1,13 +1,11 @@
 package com.gft.entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -19,8 +17,12 @@ public abstract class Pessoa {
     private String nome;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Endereco Endereco;
+    private Endereco endereco;
 
     private String telefone;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "system_user_id")
+    private SystemUser systemUser;
 
 }

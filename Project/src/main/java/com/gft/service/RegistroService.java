@@ -2,6 +2,7 @@ package com.gft.service;
 
 import java.util.List;
 
+import com.gft.entities.Animal;
 import org.springframework.stereotype.Service;
 
 import com.gft.entities.RegistroAtendimento;
@@ -20,16 +21,18 @@ public class RegistroService {
 		this.animalService = animalService;
     }
 
-    public RegistroAtendimento salvar(RegistroAtendimento registro) {
-    	
+    public void salvar(RegistroAtendimento registro) {
     	medicoService.buscar(registro.getMedico().getId());
     	animalService.buscar(registro.getAnimal().getId());
-
-        return registroRepository.save(registro);
+        registroRepository.save(registro);
     }
 
     public List<RegistroAtendimento> listar() {
         return registroRepository.findAll();
+    }
+
+    public List<RegistroAtendimento> listarPeloIDAnimal(Long id){
+        return registroRepository.findByAnimal(new Animal(id));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.gft.dto.registroAtendimento;
+package com.gft.dto.registroAtendimentoDTO;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
