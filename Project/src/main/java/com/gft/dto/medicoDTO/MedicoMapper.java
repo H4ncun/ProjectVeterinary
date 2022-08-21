@@ -10,11 +10,15 @@ public class MedicoMapper {
     public static Medico fromDTO(RequestMedicoDTO dto) {
 
         return new Medico(null, dto.getSalario(), dto.getNome(), EnderecoMapper.fromDTO(dto.getEndereco()),
-                new Format().formatNumberPhone(dto.getTelefone()),new SystemUser());
+                new Format().formatNumberPhone(dto.getTelefone()), new SystemUser());
     }
 
     public static ResponseMedicoDTO fromEntity(Medico medico) {
-        return new ResponseMedicoDTO(medico.getId(), medico.getNome(),medico.getSalario(),medico.getSystemUser().getEmail(),
+        return new ResponseMedicoDTO(medico.getId(), medico.getNome(), medico.getSalario(), medico.getSystemUser().getEmail(),
                 medico.getTelefone(), EnderecoMapper.fromEntity(medico.getEndereco()));
+    }
+
+    public static ResponseMedicoDTOWithRegistro fromRegistro(Medico medico) {
+        return new ResponseMedicoDTOWithRegistro(medico.getNome(), medico.getSystemUser().getEmail(), medico.getTelefone());
     }
 }

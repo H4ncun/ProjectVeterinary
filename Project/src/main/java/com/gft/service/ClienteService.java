@@ -16,7 +16,6 @@ public class ClienteService {
 
     final ClienteRepository clienteRepository;
     final EnderecoRepository enderecoRepository;
-
     final TipoUserRepository tipoUserRepository;
 
     public ClienteService(ClienteRepository clienteRepository, EnderecoRepository enderecoRepository, TipoUserRepository tipoUserRepository) {

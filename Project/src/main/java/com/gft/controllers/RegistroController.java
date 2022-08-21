@@ -58,8 +58,8 @@ public class RegistroController {
                 .stream().map(RegistroMapper::fromEntity)
                 .collect(Collectors.toList()));
     }
-    @ApiOperation(value = "Retorna todos os registros")
-    @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN')")
+    @ApiOperation(value = "Retorna todos os registros do animal pelo cliente")
+    @PreAuthorize("hasAnyAuthority('CLIENT')")
     @GetMapping("/animal/{id}")
     public ResponseEntity<List<ResponseRegistroDTO>> listaRegistroAnimal(@PathVariable Long id) {
         return ResponseEntity.ok(registroService.listarPeloIDAnimal(id)

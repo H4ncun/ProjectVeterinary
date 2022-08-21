@@ -21,7 +21,7 @@ public class RegistroMapper {
 
         return new ResponseRegistroDTO(registroAtendimento.getId(),
                 AnimalMapper.fromEntity(registroAtendimento.getAnimal()),
-                MedicoMapper.fromEntity(registroAtendimento.getMedico()), registroAtendimento.getData(),
+                MedicoMapper.fromRegistro(registroAtendimento.getMedico()), registroAtendimento.getData(),
                 registroAtendimento.getDadosAnimal(),
                 registroAtendimento.getDiagnostico(), registroAtendimento.getComentarios());
     }
