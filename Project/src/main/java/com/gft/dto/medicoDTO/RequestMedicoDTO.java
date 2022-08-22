@@ -37,9 +37,12 @@ public class RequestMedicoDTO {
     @NotNull
     private RequestEnderecoDTO endereco;
 
+    @ApiModelProperty(value = "E-mail do mmédico", name = "email", dataType = "String", example = "doctor@gft.com")
     @Email
     private String email;
 
+    @ApiModelProperty(value = "Senha do médico", name = "senha", dataType = "String", example = "1234")
+    @NotBlank
     private String password;
 }
 

@@ -3,9 +3,8 @@ package com.gft.dto.registroAtendimentoDTO;
 import java.time.LocalDate;
 
 import com.gft.dto.animalDTO.ResponseAnimalDTO;
-import com.gft.dto.medicoDTO.ResponseMedicoDTO;
-
 import com.gft.dto.medicoDTO.ResponseMedicoDTOWithRegistro;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

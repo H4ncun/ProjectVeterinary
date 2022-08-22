@@ -5,11 +5,6 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.gft.dto.clienteDTO.ClienteMapper;
-import com.gft.entities.Cliente;
-import com.gft.entities.SystemUser;
-import com.gft.entities.TipoUser;
-import com.gft.repositories.TipoUserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,6 +21,9 @@ import com.gft.dto.medicoDTO.MedicoMapper;
 import com.gft.dto.medicoDTO.RequestMedicoDTO;
 import com.gft.dto.medicoDTO.ResponseMedicoDTO;
 import com.gft.entities.Medico;
+import com.gft.entities.SystemUser;
+import com.gft.entities.TipoUser;
+import com.gft.repositories.TipoUserRepository;
 import com.gft.service.MedicoService;
 
 import io.swagger.annotations.ApiOperation;

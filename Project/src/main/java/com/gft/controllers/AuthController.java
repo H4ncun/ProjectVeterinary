@@ -3,6 +3,9 @@ package com.gft.controllers;
 import com.gft.dto.authSystemDTO.AuthDTO;
 import com.gft.dto.authSystemDTO.TokenDTO;
 import com.gft.service.AuthService;
+
+import io.swagger.annotations.ApiOperation;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,6 +27,7 @@ public class AuthController {
         this.authenticationManager = authenticationManager;
     }
 
+    @ApiOperation(value = "Gera o token para acessar os endpoints de acordo com o tipo de usuario")
     @PostMapping
     public ResponseEntity<TokenDTO> auth(@RequestBody AuthDTO authForm) {
         Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authForm.getEmail(), authForm.getPassword()));

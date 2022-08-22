@@ -1,6 +1,7 @@
 package com.gft.config;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.context.annotation.Bean;
@@ -13,8 +14,12 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.builders.ResponseMessageBuilder;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.AuthorizationScope;
 import springfox.documentation.service.ResponseMessage;
+import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -30,6 +35,8 @@ public class SwaggerConfig {
           .paths(PathSelectors.any())
           .build()
           .apiInfo(apiInfo())
+          .securityContexts(Arrays.asList(securityContext()))
+          .securitySchemes(Arrays.asList(apiKey()))
           .useDefaultResponseMessages(false)
           .globalResponseMessage(RequestMethod.GET, responseMessageForGET())
           .globalResponseMessage(RequestMethod.PUT, responseMessageForPUT())
@@ -48,6 +55,22 @@ public class SwaggerConfig {
         return apiInfo;
     }
 	
+	private ApiKey apiKey() { 
+	    return new ApiKey("JWT", "Authorization", "header"); 
+	}
+	
+	private SecurityContext securityContext() { 
+	    return SecurityContext.builder().securityReferences(defaultAuth()).build(); 
+	} 
+
+	private List<SecurityReference> defaultAuth() { 
+	    AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything"); 
+	    AuthorizationScope[] authorizationScopes = new AuthorizationScope[1]; 
+	    authorizationScopes[0] = authorizationScope; 
+	    return Arrays.asList(new SecurityReference("JWT", authorizationScopes)); 
+	}
+
+	
 	private List<ResponseMessage> responseMessageForGET() {
 	    return new ArrayList<ResponseMessage>() {
 	    	
@@ -63,6 +86,14 @@ public class SwaggerConfig {
 	            .code(404)
 	            .message("Content not found")
 	            .build());
+	        add(new ResponseMessageBuilder()
+		         .code(403)
+		         .message("Access forbidden")
+		         .build());
+	        add(new ResponseMessageBuilder()
+		         .code(401)
+		         .message("Access Denied")
+		         .build());
 	    }};
 	}
 	
@@ -81,6 +112,14 @@ public class SwaggerConfig {
 	            .code(404)
 	            .message("Content not found")
 	            .build());
+	        add(new ResponseMessageBuilder()
+			    .code(403)
+			    .message("Access forbidden")
+			    .build());
+		    add(new ResponseMessageBuilder()
+			    .code(401)
+			    .message("Access Denied")
+			    .build());
 	        add(new ResponseMessageBuilder()
 		        .code(400)
 		        .message("Bad request")
@@ -104,6 +143,14 @@ public class SwaggerConfig {
 	            .message("Content not found")
 	            .build());
 	        add(new ResponseMessageBuilder()
+				.code(403)
+				.message("Access forbidden")
+				.build());
+			add(new ResponseMessageBuilder()
+				.code(401)
+				.message("Access Denied")
+				.build());
+	        add(new ResponseMessageBuilder()
 		        .code(400)
 		        .message("Bad request")
 		        .build());
@@ -125,6 +172,14 @@ public class SwaggerConfig {
 	            .code(404)
 	            .message("Content not found")
 	            .build());
+	        add(new ResponseMessageBuilder()
+				.code(403)
+				.message("Access forbidden")
+				.build());
+			add(new ResponseMessageBuilder()
+				.code(401)
+				.message("Access Denied")
+				.build());
 	    }};
 	}
 }

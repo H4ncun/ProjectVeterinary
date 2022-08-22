@@ -31,9 +31,13 @@ public class RequestClienteDTO {
     @ApiModelProperty(value = "telefone do cliente", name = "telefone", dataType = "String", example = "11936482459")
     @NotBlank
     private String telefone;
+    
+    @ApiModelProperty(value = "E-mail do cliente", name = "email", dataType = "String", example = "cliente@gft.com")
     @Email
     private String email;
 
+    @ApiModelProperty(value = "Senha do cliente", name = "senha", dataType = "String", example = "1234")
+    @NotBlank
     private String password;
 
 
