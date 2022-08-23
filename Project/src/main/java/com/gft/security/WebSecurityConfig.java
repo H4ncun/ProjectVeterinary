@@ -43,7 +43,7 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().antMatchers(HttpMethod.POST, "/auth","/clientes").permitAll().anyRequest()
+        http.authorizeHttpRequests().antMatchers(HttpMethod.POST, "/auth").permitAll().antMatchers(HttpMethod.POST, "/clientes").permitAll().anyRequest()
                 .authenticated().and().csrf().disable().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .addFilterBefore(new FilterAuth(systemUserService, authService), UsernamePasswordAuthenticationFilter.class);
