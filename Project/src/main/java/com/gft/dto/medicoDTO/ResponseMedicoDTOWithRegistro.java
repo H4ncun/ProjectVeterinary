@@ -18,5 +18,4 @@ public class ResponseMedicoDTOWithRegistro {
 
     private String telefone;
 
-
 }

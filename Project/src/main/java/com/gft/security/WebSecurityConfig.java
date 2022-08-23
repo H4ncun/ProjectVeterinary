@@ -43,11 +43,10 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().antMatchers(HttpMethod.POST, "/auth").permitAll().anyRequest()
+        http.authorizeHttpRequests().antMatchers(HttpMethod.POST, "/auth","/clientes").permitAll().anyRequest()
                 .authenticated().and().csrf().disable().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .addFilterBefore(new FilterAuth(systemUserService, authService), UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
 
@@ -55,6 +54,5 @@ public class WebSecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() throws Exception {
         return (web) -> web.ignoring().antMatchers("/images/**", "/js/**", "/v2/api-docs", "/configuration/ui",
                 "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**");
-
     }
 }

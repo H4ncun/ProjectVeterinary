@@ -31,22 +31,22 @@ public class ClienteService {
         clienteRepository.save(cliente);
     }
 
-    public Cliente buscarCliente(Long id) {
+    public Cliente buscar(Long id) {
         return clienteRepository.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaException("Cliente não encontrado"));
     }
 
-    public Page<Cliente> listarCliente(Pageable page) {
+    public Page<Cliente> listar(Pageable page) {
         return clienteRepository.findAll(page);
     }
 
     @Transactional
-    public void deletarCliente(Long id) throws Exception {
-        Cliente cliente = this.buscarCliente(id);
+    public void deletar(Long id) throws Exception {
+        Cliente cliente = this.buscar(id);
         clienteRepository.delete(cliente);
     }
 
-    public Cliente atualizarCliente(Cliente cliente, Long id) throws Exception {
-        Cliente clienteOriginal = this.buscarCliente(id);
+    public Cliente atualizar(Cliente cliente, Long id) throws Exception {
+        Cliente clienteOriginal = this.buscar(id);
         cliente.setId(clienteOriginal.getId());
         cliente.getEndereco().setId(clienteOriginal.getEndereco().getId());
         cliente.setSystemUser((clienteOriginal.getSystemUser()));

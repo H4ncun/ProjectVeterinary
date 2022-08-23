@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@PreAuthorize("hasAnyAuthority('ADMIN','DOCTOR')")
 @RequestMapping("/clientes")
 public class ClienteController {
 
@@ -34,15 +33,17 @@ public class ClienteController {
     }
 
     @ApiOperation(value = "Retorna todos os clientes")
+    @PreAuthorize("hasAnyAuthority('ADMIN','DOCTOR')")
     @GetMapping
     public ResponseEntity<Page<ResponseClienteDTO>> listarCliente(@PageableDefault(sort = "id") Pageable page) {
-        return ResponseEntity.ok(clienteService.listarCliente(page).map(ClienteMapper::fromEntity));
+        return ResponseEntity.ok(clienteService.listar(page).map(ClienteMapper::fromEntity));
     }
 
     @ApiOperation(value = "Retorna um cliente pelo id informado")
+    @PreAuthorize("hasAnyAuthority('ADMIN','DOCTOR')")
     @GetMapping("{id}")
     public ResponseEntity<ResponseClienteDTO> buscarCliente(@PathVariable Long id) throws Exception {
-        Cliente cliente = clienteService.buscarCliente(id);
+        Cliente cliente = clienteService.buscar(id);
         return ResponseEntity.ok(ClienteMapper.fromEntity(cliente));
     }
 
@@ -61,16 +62,17 @@ public class ClienteController {
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @DeleteMapping("{id}")
     public ResponseEntity<ResponseClienteDTO> deletarCliente(@PathVariable Long id) throws Exception {
-        clienteService.deletarCliente(id);
+        clienteService.deletar(id);
         return ResponseEntity.ok().build();
     }
 
     @ApiOperation(value = "Atualiza os dados do cliente informado pelo id")
+    @PreAuthorize("hasAnyAuthority('ADMIN','DOCTOR')")
     @PutMapping("{id}")
     public ResponseEntity<ResponseClienteDTO> atualizarCliente(@Valid @RequestBody RequestClienteDTO dto, @PathVariable Long id) {
         Cliente cliente;
         try {
-            cliente = clienteService.atualizarCliente(ClienteMapper.fromDTO(dto), id);
+            cliente = clienteService.atualizar(ClienteMapper.fromDTO(dto), id);
             return ResponseEntity.ok(ClienteMapper.fromEntity(cliente));
         } catch (Exception e) {
             return ResponseEntity.notFound().build();

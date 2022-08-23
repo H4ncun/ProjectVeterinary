@@ -29,7 +29,7 @@ public class AnimalService {
 
     @Transactional
     public Animal salvar(Animal animal) {
-        clienteService.buscarCliente(animal.getTutor().getId());
+        clienteService.buscar(animal.getTutor().getId());
         Flux<Raca> raca = racaService.obterRacaPorId(animal.getRaca().getId());
         Raca racaBanco = racaRepository.save(raca.blockFirst());
         animal.setRaca(racaBanco);
