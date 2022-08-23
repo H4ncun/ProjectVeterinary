@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  app:
+    image: api-veterinario:latest
+    build:
+      context: ./
+    ports:
+      - 8080:8080
+    container_name: app-veterinario
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/db-veterinario
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    container_name: dbpostgre
+    environment:
+      - POSTGRES_DB=db-veterinario
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+    
