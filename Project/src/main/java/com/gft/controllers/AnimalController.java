@@ -25,7 +25,7 @@ public class AnimalController {
     }
 
     @ApiOperation(value = "Cria um animal informando seu respectivo dono")
-    @PreAuthorize("hasAnyAuthority('ADMIN','DOCTOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','DOCTOR', 'CLIENT')")
     @PostMapping
     public ResponseEntity<ResponseAnimalDTO> salvarAnimal(@RequestBody @Valid RequestAnimalDTO dto) {
         Animal animal = animalService.salvar(AnimalMapper.fromDTO(dto));

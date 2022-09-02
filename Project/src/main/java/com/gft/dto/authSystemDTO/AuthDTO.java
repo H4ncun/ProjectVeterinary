@@ -18,7 +18,7 @@ public class AuthDTO {
 	@NotBlank
     private String email;
 	
-	@ApiModelProperty(value = "Senha para o login", name = "senha", dataType = "String", example = "123")
+	@ApiModelProperty(value = "Senha para o login", name = "senha", dataType = "String", example = "1234")
 	@NotBlank
     private String password;
 

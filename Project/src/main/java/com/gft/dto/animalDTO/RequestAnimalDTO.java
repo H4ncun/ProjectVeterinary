@@ -27,7 +27,7 @@ public class RequestAnimalDTO {
     @NotNull
     private LocalDate dataNascimento;
 
-    @ApiModelProperty(value = "Id do Animal", name = "racaId", dataType = "int", example = "Pinscher")
+    @ApiModelProperty(value = "Id do Animal", name = "racaId", dataType = "int", example = "1")
     @NotNull
     private Long racaId;
 
